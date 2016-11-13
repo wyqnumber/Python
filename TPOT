@@ -1,0 +1,13 @@
+利用TPOT 自动化解决数据分析
+
+http://datartisan.com/article/detail/131.html
+
+from tpot import TPOT
+
+...
+my_tpot = TPOT(generations=10)
+my_tpot.fit(X_train, y_train)
+print(my_tpot.score(X_test, y_test))
+
+
+my_tpot.export('exported_pipeline.py')
