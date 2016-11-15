@@ -1,0 +1,10 @@
+Github: http://t.cn/RftZhbo Video: http://t.cn/RfPAltN 
+
+【IPN:(通过模拟)理解概率主题模型】 http://t.cn/RUOUwdZ
+
+In[3] 显示的是两个类别sepal length 不同长度的个数
+
+In[7] 假设sepal_length是正态分布的模拟，另外，分布的参数也可以属于某种分布
+
+In[9] 用Latent Dirichlet Allocation中的dirichlet分布来模拟数据
+
