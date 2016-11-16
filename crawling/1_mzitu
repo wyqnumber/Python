@@ -17,12 +17,12 @@ class mzitu():
 	    	title = a.get_text()
 	    	dirNum += 1
 	    	print str(dirNum) + ' : ' + title ##加点提示不然太枯燥了
-        # 创建文件夹要写绝对路径，因为相对路径会造成递归的文件夹生成,Ubuntu不识别中文创建文件夹的名称，所以简单的用数字创建文件夹
-	    	os.makedirs(os.path.join("/mzituImage", str(dirNum)))
+            # 创建文件夹要写绝对路径，因为相对路径会造成递归的文件夹生成,Ubuntu不识别中文创建文件夹的名称，所以简单的用数字创建文件夹
+	    	os.makedirs(os.path.join("/home/hadoop/Documents/studySomething/crawling/other/mzitu/mzituImage", str(dirNum)))
 	    	# path = str(title).encode('utf-8').replace('?', '_')##我注意到有个标题带有 ？  这个符号Windows系统是不能创建文件夹的所以要替换掉
 	    	# path = title
 	    	# self.mkdir(path) ##调用mkdir函数创建文件夹！这儿path代表的是标题title哦！！！！！不要糊涂了哦！
-	    	os.chdir("mzituImage/" +str(dirNum)) ##切换到目录
+	    	os.chdir("/home/hadoop/Documents/studySomething/crawling/other/mzitu/mzituImage/" +str(dirNum)) ##切换到目录
 	    	href = a['href']
 	    	self.html(href) ##调用html函数把href参数传递过去！href是啥还记的吧？ 就是套图的地址哦！！不要迷糊了哦！
 
@@ -43,71 +43,27 @@ class mzitu():
     ##这个函数保存图片
     def save(self, img_url):
     	name = img_url[-9:-4]
-    	img = self.request(img_url)
-
-            
-        f = open(name + '.jpg', 'ab')
-
-            
-        f.write(img.content)
-
-            
+    	img = self.request(img_url)     
+        f = open(name + '.jpg', 'ab')    
+        f.write(img.content)     
         f.close()
 
-            
- 
-
-            
-    # def mkdir(self, path): ##这个函数创建文件夹
-
-            
-    #     path = path.strip()
-
-            
-    #     isExists = os.path.exists(os.path.join("./mzituImage", path))
-
-            
+    # def mkdir(self, path): ##这个函数创建文件夹  
+    #     path = path.strip()  
+    #     isExists = os.path.exists(os.path.join("./mzituImage", path))  
     #     if not isExists:
-
-            
-    #         print(u'建了一个名字叫做', path, u'的文件夹！')
-
-            
+    #         print(u'建了一个名字叫做', path, u'的文件夹！') 
     #         os.makedirs(os.path.join("./mzituImage", path))
-
-            
     #         return True
-
-            
     #     else:
-
-            
     #         print(u'名字叫做', path, u'的文件夹已经存在了！')
-
-            
     #         return False
-
-            
- 
-
-            
-    def request(self, url): ##这个函数获取网页的response 然后返回
-
-            
-        headers = {'User-Agent': "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.1 (KHTML, like Gecko) Chrome/22.0.1207.1 Safari/537.1"}
-
-            
-        content = requests.get(url, headers=headers)
-
-            
+   
+    def request(self, url): ##这个函数获取网页的response 然后返回    
+        headers = {'User-Agent': "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.1 (KHTML, like Gecko) Chrome/22.0.1207.1 Safari/537.1"}  
+        content = requests.get(url, headers=headers)   
         return content
 
             
- 
-
-            
-Mzitu = mzitu() ##实例化
-
-            
+Mzitu = mzitu() ##实例化         
 Mzitu.all_url('http://www.mzitu.com/all') ##给函数all_url传入参数  你可以当作启动爬虫
-
